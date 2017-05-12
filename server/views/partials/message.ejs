@@ -1,0 +1,18 @@
+<% if(error.length > 0) { %>
+<div class="alert alert-danger alert-dismissible">
+    <button type = "button" data-dismmiss = "alert" aria-label = "close" class="close">
+        <span aria-hidden = "true" >&times;</span>
+        
+    </button>
+    <%= error %>
+</div>
+<% } %>
+<% if(message.length > 0) { %>
+<div class="alert alert-success alert-dismissible">
+    <button type = "button" data-dismmiss = "alert" aria-label = "close" class="close">
+        <span aria-hidden = "true" >&times;</span>
+        
+    </button>
+    <%= message %>
+</div>
+<% } %>

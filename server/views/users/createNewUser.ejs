@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+<div class="container">
+    <div id="createNewUser">
+        <h1 class = "text-center">Create new User</h1>
+        <form action = "/users/create-new-user" method = "POST" class="form">
+            <div class="form-group">
+                <input class="form-control" name = "name" type = "text" placeholder = "name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name = "email" type = "text" placeholder = "email">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name = "password" type = "password" placeholder = "password">
+            </div>
+            <button class = "btn btn-success">submit</button>
+        </form>
+    </div>
+</div>
+
+<% include ../partials/footer %>
