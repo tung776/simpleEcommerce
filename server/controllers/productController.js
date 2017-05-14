@@ -2,30 +2,30 @@ const productController = {};
 import  categoryModel from "../models/categoryModel";
 import productmodel from "../models/productModel";
 
-productmodel.createMapping(function(err, mapping){
-    if(err){
-        console.log("mapping has error");
-        console.log(err);
-    }
-    else{
-        console.log("mapping success");
-        //console.log(mapping);
-    }
-});
+// productmodel.createMapping(function(err, mapping){
+//     if(err){
+//         console.log("mapping has error");
+//         console.log(err);
+//     }
+//     else{
+//         console.log("mapping success");
+//         //console.log(mapping);
+//     }
+// });
 
-const stream = productmodel.synchronize();
-let count = 0;
-stream.on("error", function(err){
-    console.log(err);
-});
+// const stream = productmodel.synchronize();
+// let count = 0;
+// stream.on("error", function(err){
+//     console.log(err);
+// });
 
-stream.on("data", function(data){
-    count ++;
-});
+// stream.on("data", function(data){
+//     count ++;
+// });
 
-stream.on("close", function(){
-    console.log("maps " + count + " documents");
-});
+// stream.on("close", function(){
+//     console.log("maps " + count + " documents");
+// });
 
 productController.getSearch = function(req, res, next){
     res.json(req.query.q);
