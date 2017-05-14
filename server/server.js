@@ -4,7 +4,7 @@ import { userRouter, mainRouter, adminRouter, apiRouter, productRouter } from '.
 import { appConfig, databaseConfig, passportConfig} from './config';
 
 const port = process.env.PORT || 3000;
-const ip = process.env.IP || localhost;
+const ip = process.env.IP ;
 const app = express();
 
 databaseConfig();
