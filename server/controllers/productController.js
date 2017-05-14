@@ -9,7 +9,7 @@ productmodel.createMapping(function(err, mapping){
     }
     else{
         console.log("mapping success");
-        console.log(mapping);
+        //console.log(mapping);
     }
 });
 
@@ -26,6 +26,32 @@ stream.on("data", function(data){
 stream.on("close", function(){
     console.log("maps " + count + " documents");
 });
+
+productController.getSearch = function(req, res, next){
+    res.json(req.query.q);
+    // if(req.query.q){
+    //     productmodel.search({
+    //         query_string: {query: req.query.q}
+    //     }, function(err, results){
+    //         if(err) return next(err);
+            
+    //         const data = results.hits.hits.map(function(hit){
+    //             return hit;
+    //         });
+    //         res.render('products/search', {
+    //             query: req.query.q,
+    //             data: data
+    //         });
+    //     });
+    // }
+};
+
+productController.postSearch = function(req, res, next){
+    console.log("go here");
+    console.log(req.body.search);
+    //res.json({message: "go here", data: req.body});
+    res.redirect("/product/search?q=" + req.body.search );
+};
 
 productController.getProducts = async function (req, res, next){
     try {

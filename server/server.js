@@ -45,5 +45,7 @@ app.listen(port, ip, (err)=>{
     }
     else {
         console.log("server is running!");
+        console.log("on:http://" + process.env
+        .IP + ":" + process.env.PORT);
     }
 })
