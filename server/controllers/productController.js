@@ -27,30 +27,32 @@ import productmodel from "../models/productModel";
 //     console.log("maps " + count + " documents");
 // });
 
-productController.getSearch = function(req, res, next){
-    res.json(req.query.q);
-    // if(req.query.q){
-    //     productmodel.search({
-    //         query_string: {query: req.query.q}
-    //     }, function(err, results){
-    //         if(err) return next(err);
+// productController.getSearch = function(req, res, next){
+//     console.log("go here");
+//     res.send("hello");
+//     // if(req.query.q){
+//     //     productmodel.search({
+//     //         query_string: {query: req.query.q}
+//     //     }, function(err, results){
+//     //         if(err) return next(err);
             
-    //         const data = results.hits.hits.map(function(hit){
-    //             return hit;
-    //         });
-    //         res.render('products/search', {
-    //             query: req.query.q,
-    //             data: data
-    //         });
-    //     });
-    // }
-};
+//     //         const data = results.hits.hits.map(function(hit){
+//     //             return hit;
+//     //         });
+//     //         res.render('products/search', {
+//     //             query: req.query.q,
+//     //             data: data
+//     //         });
+//     //     });
+//     // }
+// };
 
-productController.postSearch = function(req, res, next){
-    console.log("go here");
-    console.log(req.body.search);
-    //res.json({message: "go here", data: req.body});
-    res.redirect("/product/search?q=" + req.body.search );
+productController.postSearch = async function(req, res, next){
+    const search = req.body.search;
+    const regExp = new RegExp(req.body.search, "i");
+    const query = {name: regExp}; 
+    const foundProduct = await productmodel.find(query).populate("category");
+    res.render("products/search", { products: foundProduct });
 };
 
 productController.getProducts = async function (req, res, next){
