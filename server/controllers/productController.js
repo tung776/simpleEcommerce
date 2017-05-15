@@ -52,7 +52,7 @@ productController.postSearch = async function(req, res, next){
     const regExp = new RegExp(req.body.search, "i");
     const query = {name: regExp}; 
     const foundProduct = await productmodel.find(query).populate("category");
-    res.render("products/search", { products: foundProduct });
+    res.render("products/products", { products: foundProduct });
 };
 
 productController.getProducts = async function (req, res, next){
