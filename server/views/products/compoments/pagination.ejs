@@ -1,0 +1,20 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li>
+      <a href="/product/?page=1" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <% if(pages) { %>
+        <% for(var i= 0; i <pages; i ++) { %>
+        <li><a href="/product/?page=<%= i +1 %>"><%= i +1  %></a></li>
+        <% } %>
+    <% } %>
+    
+    <li>
+      <a href="/product/?page=<%= pages %>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

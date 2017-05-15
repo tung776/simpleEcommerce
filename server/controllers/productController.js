@@ -55,14 +55,25 @@ productController.postSearch = async function(req, res, next){
     res.render("products/products", { products: foundProduct });
 };
 
+
 productController.getProducts = async function (req, res, next){
     try {
+        let perpage = 9;
+        let page = req.query.page || 1;
         let category = await categoryModel.findOne({});
-        let products = await productmodel.find({category: category._id});
-        res.render("products/products", {products: products});
+        let products = await productmodel.find({category: category._id})
+                                        .limit(perpage )
+                                        .skip( perpage * page)
+                                        .populate("category");
+        let count = await productmodel.count({category: category._id});
+        res.render("products/products", {
+            products: products,
+            pages: Math.floor(count/perpage)
+        });
     }
     catch(err) {
         console.log(err);
+        next(err);
     }
 
 };
