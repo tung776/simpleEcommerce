@@ -1,0 +1,94 @@
+<% layout('layout') %>
+
+	<% include compoments/header-product %>
+	<br/>
+	<% include compoments/search %>
+	
+    <!--// END Shop 1-2 --><!-- Start Shop 1-5 v1 -->
+    <section id="shop-1-5" class="content-block shop-1-5">
+    	<div class="container">
+			<div class="row">
+			
+				<div class="col-md-9">
+					<div class="row">
+						<br/>
+						<% for(var i = 0; i < products.length; i ++) { %>
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="product clearfix">
+								<div class="ribbon sale"></div><!-- Ribbon -->
+								<div class="product-image">
+		                            <a href="/product/detail/<%= products[i]._id %>"><img src="<%= products[i].image %>" class="img-responsive" alt="<%= products[i].name %>"></a>
+		                            <a href="/product/detail/<%= products[i]._id %>"><img src="<%= products[i].image %>" class="img-responsive" alt="<%= products[i].name %>"></a>
+		                            <div class="product-overlay">
+		                                <a href="#" class="add-to-cart"><i class="fa fa-cart-plus"></i></a>
+		                                <a href="<%= products[i].image %>" class="gallery-zoom" data-lightbox="ajax"><i class="fa fa-search"></i></a>
+		                            </div>
+		                        </div>
+		                        <div class="product-desc">
+		                        	<div class="editContent" style="outline: none; cursor: inherit;">
+		                            	<h3><a href="#"><%= products[i].name %></a></h3>
+		                        	</div>
+		                        	<div class="editContent" style="outline: none; cursor: inherit;">
+		                            	<h4><del>$<%= Math.floor(products[i].price * 1.2) %></del> $<%= products[i].price %></h4>
+		                        	</div>
+		                            <div class="product-rating">
+		                                <i class="fa fa-star"></i>
+		                                <i class="fa fa-star"></i>
+		                                <i class="fa fa-star"></i>
+		                                <i class="fa fa-star-half-o"></i>
+		                                <i class="fa fa-star-o"></i>
+		                            </div>
+		                        </div>
+							</div>
+						</div>
+						<% } %>
+						
+					</div><!-- /.row -->
+					<% include compoments/pagination %>
+				</div><!-- /.main-col -->
+				
+				<div class="sidebar col-md-3">
+					<br/>
+					<div class="widget">
+						<div class="editContent" style="outline: none; cursor: inherit;">
+                        	<h4>Shop by Category</h4>
+						</div>
+                        <ul class="nav nav-pills nav-stacked">
+                        	<% for(var i = 0; i < menuCategories.length; i ++) { %>
+							<li><a href="<%= menuCategories[i]._id%>"><%= menuCategories[i].name %></a></li>
+							<% } %>
+						</ul>
+                    </div>
+                    
+                    <div class="widget clearfix">
+
+                        <div class="editContent" style="outline: none; cursor: inherit;">
+                        	<h4>Popular Items</h4>
+                        </div>
+                        
+
+                    </div><!-- /.widget -->
+                    
+                    <div class="widget">
+	                    <img class="img-rounded img-responsive" src="http://placehold.it/600x400">
+						<div class="editContent">
+	                    	<h3>Subscribe for the latest Offers</h3>
+						</div>
+						<div class="editContent">
+	                    	<p>Subscribe to our Newsletter for the very latest Special Offers and New Products.</p>
+						</div>
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Email">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" style="outline: none; cursor: inherit;">send</button>
+							</span>
+						</div><!-- /input-group -->
+	                    
+                    </div><!-- /.widget -->
+					
+				</div><!-- /.sidebar -->
+			
+			</div><!-- /.row -->
+    	</div><!-- /.container -->
+    </section>
+	<!--// End Shop 1-5 v1 --><!-- Start Footer 1-1 -->

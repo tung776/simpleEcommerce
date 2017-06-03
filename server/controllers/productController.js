@@ -57,7 +57,7 @@ productController.getProductByCategoryId = async (req, res, next)=> {
                                             .limit(perpage )
                                             .skip( perpage * page)
                                             .populate("category");
-        let count = await productmodel.count({category: category._id});
+        let count = await productmodel.count({category: categoryId});
         res.render("products/products", {
             products: products,
             pages: Math.floor(count/perpage)

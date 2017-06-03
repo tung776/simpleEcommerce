@@ -1,212 +1,58 @@
 <% layout("layout") %>
-	<%include compoments/header-product %>
-	<br/>
-    <section id="shop-1-6" class="content-block shop-1-6">
-    	<div class="container">
-			<div class="row">
-			
-				<div class="col-md-9">
+
+<section id="product-detail" class="text-center">	
+		<div class="container">
+			<div class="col-lg-3">
+				<div class = "category-box">
+					<ul class = "list-unstyled">
+						<li><a href="#">Sơn PU</a></li>
+						<li><a href="#">Sơn 2k</a></li>
+						<li><a href="#">Sơn Kẽm</a></li>
+						<li><a href="#">Sơn Công Nghiệp</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-9">
+				<div class="product-detail-box">
+					<h1 class = "active-color"><%= product.name %></h1>
 					<div class="row">
-						
-						<div class="col-md-6">
-							<div class="ribbon exclusive"></div><!-- Ribbon -->
-							<div class="product-image">
-	                            <a href="#"><img src="<%= product.image %>" class="img-responsive" alt="Checked Short Dress"></a>
-	                            <a href="#"><img src="<%= product.image %>" class="img-responsive" alt="Checked Short Dress"></a>
-	                        </div>
-						</div>
-						
-						<div class="col-md-6">
-							
-							<div class="product-desc">
-								<div class="editContent" style="outline: none; cursor: inherit;">
-                                	<h1><%= product.name %></h1>
+						<div class="col-lg-6">
+							<img src="<%= product.image %>" alt="<%= product.name %>">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="price pull-left">
+									<i></i><span class="text-success"><%= product.price %> VNĐ</span>
 								</div>
-								<div class="editContent">
-                                	<h2>$<%= product.price %></h2>
 								</div>
-                                <div class="product-rating">
-	                                <span>Avg customer rating:</span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                            
-	                            <form class="form-inline">
-									<div class="form-group">
-										<label class="sr-only" for="exampleInputAmount">Quantity</label>
-										<div class="input-group">
-											<span class="input-group-btn">
-												<button class="btn btn-default" type="button" style="outline: none; cursor: inherit;">-</button>
-											</span>
-											<input type="text" class="form-control" id="quantity" placeholder="1">
-											<span class="input-group-btn">
-												<button class="btn btn-default" type="button">+</button>
-											</span>
-										</div>
+								<div class="col-xs-6">
+									<div class="star pull-right">
+										<i class = "fa fa-star"></i>
+										<i class = "fa fa-star"></i>
+										<i class = "fa fa-star"></i>
+										<i class = "fa fa-star"></i>
+										<i class = "fa fa-star"></i>
 									</div>
-									<button type="submit" class="btn btn-primary">Add to Cart</button>
-								</form>
-	
-	                            <div class="editContent">
-	                            	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero velit id eaque ex quae laboriosam nulla optio doloribus! Perspiciatis, libero, neque, perferendis at nisi optio dolor!</p>
-									<p>Perspiciatis ad eveniet ea quasi debitis quos laborum eum reprehenderit eaque explicabo assumenda rem modi.</p>
-	                            </div>
-	                            
-	                            <ul class="fa-ul">
-	                            	<li><i class="fa-li fa fa-chevron-right"></i>Dynamic Color Options</li>
-	                            	<li><i class="fa-li fa fa-chevron-right"></i>Lots of Size Options</li>
-	                            	<li><i class="fa-li fa fa-chevron-right"></i>30-Day Return Policy</li>
-	                            </ul>
-	                            
-	                            <hr>
-	                            
-	                            <ul class="fa-ul">
-	                                <li><i class="fa-li fa fa-search"></i>SKU: 53016341</li>
-	                                <li><i class="fa-li fa fa-th-list"></i>Category: <a href="/product/<%= product.category._id %>"><%= product.category.name %></a></li>
-	                                <li><i class="fa-li fa fa-tags"></i>Tags: <a href="#">Leather</a>, <a href="#">Hand-made</a>, <a href="#">Footwear</a>
-	                            </li></ul>
-	                        </div><!-- /.product-desc -->
-
+								</div>
+							</div>
+							<ul class="fa-ul text-left">
+	                            <li><i class="fa-li fa fa-search"></i>SKU: 53016341</li>
+	                            <li><i class="fa-li fa fa-th-list"></i>Category: <a href="/product/<%= product.category._id %>"><%= product.category.name %></a></li>
+	                            </li>
+	                        </ul>
 						</div>
-						
-					</div><!-- /.row -->
-					
-					<div class="more-info-tabs">
-					
-						<ul class="nav nav-tabs text-center" role="tablist" id="myTab">
-							<li class="active"><a href="#description1" role="tab" data-toggle="tab">Description</a></li>
-							<li><a href="#moreinfo1" role="tab" data-toggle="tab">More Info</a></li>
-							<li><a href="#reviews1" role="tab" data-toggle="tab">Reviews</a></li>
-						</ul>
-						
-						<div class="tab-content">
 							
-							<div class="tab-pane fade in active" id="description1">
-								<div class="row">
-								
-									<div class="col-xs-10 col-xs-offset-1">
-										<div class="editContent">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero velit id eaque ex quae laboriosam nulla optio doloribus! Perspiciatis, libero, neque, perferendis at nisi optio dolor!</p>
-											<p>Perspiciatis ad eveniet ea quasi debitis quos laborum eum reprehenderit eaque explicabo assumenda rem modi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero velit id eaque ex quae laboriosam nulla optio doloribus! Perspiciatis, libero, neque, perferendis at nisi optio dolor!</p>
-											<p>Perspiciatis ad eveniet ea quasi debitis quos laborum eum reprehenderit eaque explicabo assumenda rem modi.</p>
-										</div>
-									</div>
-									
-								</div>	
-							</div><!-- /#tab1 -->
+						<div class="col-lg-6">
 							
-							<div class="tab-pane fade" id="moreinfo1">
-								<div class="row">
-									
-									<div class="col-xs-10 col-xs-offset-1">
-										<table class="table table-striped table-hover">
-											<tbody>
-												<tr>
-													<td>Sizes:</td>
-													<td>Available is small, medium and large</td>
-												</tr>
-												<tr>
-													<td>Colors:</td>
-													<td>Multicolor print</td>
-												</tr>
-												<tr>
-													<td>Fabric:</td>
-													<td>Cotton, silk and synthetic</td>
-												</tr>
-												<tr>
-													<td>Washing:</td>
-													<td>Dry clean only</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									
-								</div><!-- /.row -->
-							</div><!-- /#tab2 -->
-							
-							<div class="tab-pane fade" id="reviews1">
-								<div class="row">
-									
-									<div class="col-xs-10 col-xs-offset-1">
-									
-										<div class="review">
-											<h4>Joe Smith</h4>
-			                                <h5>March 5th 2015</h5>
-			                                <div class="product-rating">
-				                                <i class="fa fa-star"></i>
-				                                <i class="fa fa-star"></i>
-				                                <i class="fa fa-star"></i>
-				                                <i class="fa fa-star-half-o"></i>
-				                                <i class="fa fa-star-o"></i>
-				                            </div>
-				                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo perferendis aliquid tenetur. Aliquid, tempora, sit aliquam officiis nihil autem eum at repellendus facilis quaerat consequatur commodi laborum saepe non nemo nam maxime quis error tempore possimus est quasi reprehenderit fuga!</p>
-										</div><!-- /.review -->
-										
-										<div class="review">
-											<h4>Sally T</h4>
-			                                <h5>April 25th 2015</h5>
-			                                <div class="product-rating">
-				                                <i class="fa fa-star"></i>
-				                                <i class="fa fa-star"></i>
-				                                <i class="fa fa-star"></i>
-				                                <i class="fa fa-star"></i>
-				                                <i class="fa fa-star-o"></i>
-				                            </div>
-				                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo perferendis aliquid tenetur. Aliquid, tempora, sit aliquam officiis nihil autem eum at repellendus facilis quaerat consequatur commodi laborum saepe non nemo nam maxime quis error tempore possimus est quasi reprehenderit fuga!</p>
-										</div><!-- /.review -->
-										
-									</div>
-									
-								</div><!-- /.row -->
-							</div><!-- /#tab3 -->
-							
-						</div><!-- /.tab-content -->
-					</div><!-- /.more-info-tabs -->
-					
-				</div><!-- /.main-col -->
+							<div class="row description">
+								<p class = "text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, magnam ad dicta temporibus ipsum dolorem consectetur perferendis laborum cupiditate. Saepe aut quasi adipisci voluptatem impedit dolorum aliquid obcaecati fuga vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla commodi numquam quibusdam, voluptatum id voluptates eum sed dolore explicabo ut animi quo accusamus porro nihil cum incidunt esse tempora praesentium?</p>
+								<p class = "text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero vel ducimus odio iusto labore, atque. Odio unde provident atque necessitatibus aut repellendus possimus ab quos obcaecati, repudiandae modi ut nemo!</p>
+							</div>							
+						</div>
+						<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+					</div>
+				</div>
 				
-				<div class="sidebar col-md-3">
-					
-					<div class="widget">
-                        <h4>Shop by Category</h4>
-                        
-                        <ul class="nav nav-pills nav-stacked">
-                            <% for(var i = 0; i < menuCategories.length; i++) { %>
-							<li class="default"><a href="#"><%= menuCategories[i].name %></a></li>
-							<% } %>
-							
-						</ul>
-                    </div>
-                    
-                    <div class="widget clearfix">
-
-                        
-
-                    </div><!-- /.widget -->
-                    
-                    <div class="widget">
-	                    <img class="img-rounded img-responsive" src="http://placehold.it/600x400" style="outline: none; cursor: inherit;">
-						<div class="editContent" style="outline: none; cursor: inherit;">
-	                    	<h3>Subscribe for the latest Offers</h3>
-						</div>
-						<div class="editContent" style="outline: none; cursor: inherit;">
-	                    	<p>Subscribe to our Newsletter for the very latest Special Offers and New Products.</p>
-						</div>
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Email">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button" style="outline: none; cursor: inherit;">send</button>
-							</span>
-						</div><!-- /input-group -->
-	                    
-                    </div><!-- /.widget -->
-					
-				</div><!-- /.sidebar -->
-			
-			</div><!-- /.row -->
-    	</div><!-- /.container -->
-    </section>
-	<!--// End Shop 1-6 v1 --><!-- Start Footer 1-1 -->
+			</div>
+		
+	</div>
+</section>

@@ -1,0 +1,16 @@
+@media(max-width: 767px) {
+	color: red;
+	#header {
+		.head {
+			.navbar-right {
+				width: 50% !important;
+				text-align: right!important;
+			}
+			.navbar-left {
+				width: 50%!important;
+				text-align: left!important;
+			}
+		}
+	}
+}
+

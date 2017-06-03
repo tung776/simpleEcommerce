@@ -1,82 +1,45 @@
-<% layout('layout') %>
-<div class="row register-form">
-        <div class="col-md-8 col-md-offset-2">
-            <form action = "/users/register" method = "POST" class="form-horizontal custom-form">
-                <h1>Register Form</h1>
-                <% include ../partials/message %>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="name">Name </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input name = "name" class="form-control" type="text" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="email" >Email </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input name = 'email' class="form-control" type="email" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="pawssword-input-field">Password </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input name = "password" class="form-control" type="password" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Repeat Password </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input name = "repeatPassword" class="form-control" type="password" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Address </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input name = "address" class="form-control" type="text">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Phone </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input name = "phone" class="form-control" type="text">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Birthday </label>
-                    </div>
-                    <div class="col-sm-6 input-column">
-                        <input name = "Birthday" class="form-control" type="Date">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-4 label-column">
-                        <label class="control-label" for="repeat-pawssword-input-field">Gender </label>
-                    </div>
-                    <div class="col-sm-3 input-column text-center ">
+<% layout("shortLayout") %>
+				
+			<!--register-->
+			<section id="register" class="text-center div container">
+				<h1 class = "active-color">Đăng Ký</h1>
+				<% include ../partials/message %>
+				<form action = "/users/register" method = "POST">
+					<div class="form-group">
+						<input name = "name" class="form-control" type="text" required placeholder = "Tên người dùng">
+					</div>
+					<div class="form-group">
+						<input name = 'email' type="email" class="form-control" placeholder="Điền địa chỉ email">
+					</div>
+					
+					<div class="form-group">
+						<input name = "password"  type="password" class="form-control" placeholder="Điền password">
+					</div>
+					<div class="form-group">
+						<input name = "repeatPassword" type="password" class="form-control" placeholder="Nhập lại password">
+					</div>
+					<div class="form-group">
+						<input  name = "address" class="form-control" type="text" required placeholder = "Địa chỉ...">
+					</div>
+					<div class="form-group">
+						<input name = "phone"class="form-control" type="text" required placeholder = "Số điện thoại ...">
+					</div>
+					<div class="form-group">
+						<input name = "Birthday"class="form-control" type="date" required placeholder = "Ngày sinh..">
+					</div>
+					<div class="form-group">
+                    
                         <label>Man <input name = "Gender" class = "radio-inline" type="radio" value = "man"></label>
-                    </div>
-                    <div class="col-sm-3 input-column text-center">
+                    
                         <label>Woman <input name = "Gender" class = "radio-inline" type="radio" value = "woman"></label>
                     </div>
-                </div>
+                
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" required>I've read and accept the terms and conditions</label>
                 </div>
-                <button class="btn btn-default submit-button" type="submit">Submit Form</button>
-            </form>
-        </div>
-    </div>
+					<button class="btn btn-lg btn-primary">Đăng Ký</button>
+				</form>
+			</section>
+			<!--end register-->
+		

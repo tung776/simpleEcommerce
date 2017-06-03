@@ -1,38 +1,306 @@
 <% layout('layout') %>
-<div class="jumbotron hero-technology">
-        <h1 class="hero-title">Cattuong coating</h1>
-        <p class="hero-subtitle">Colorful for your life</p>
-        <p><a class="btn btn-primary btn-lg hero-button" role="button" href="/products">Order now</a></p>
-    </div>
-    <div class="simple-slider">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <% for(var i = 0; i < categories.length; i++) { %>
-                <div class="swiper-slide" 
-                    style="background-image:url(<%= categories[i].image %>);"></div>
-                <% } %>
-                
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
-    </div>
-    <div class="photo-gallery">
-        <div class="container">
-            <div class="intro">
-                <h2 class="text-center">Categories </h2>
-                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
-            </div>
-            <div class="row photos">
-                <% for(var i = 0; i < categories.length; i++) { %>
-                <div class="col-lg-3 col-md-4 col-sm-6 item">
-                    <a href="/products/<%= categories[i]._id %>" data-lightbox="photos">
-                        <img class="img-responsive" src="<%= categories[i].image %>">
-                    </a>
-                </div>
-                <% } %>
-                
-            </div>
-        </div>
-    </div>
+
+<!--wellcome-->
+<section id="wellcome" class="text-center">
+<!--	<div class="overlay">-->
+		<div class="container">
+			<h1>Chào mừng bạn đến với <strong class="active-color">Sơn Cát Tường</strong></h1>
+			<p class = "lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae aliquid voluptas ducimus possimus quo, eveniet obcaecati quia alias, deleniti deserunt cum aspernatur dignissimos facere quaerat hic. Consectetur soluta voluptate cum.</p>
+		</div>
+<!--	</div>-->
+</section>
+<!--end wellcome-->
+
+<!--our service-->
+<section id="our-service" class = "text-center">
+	<div class="overlay">
+		<div class="container">
+			<h1><strong class = "focus-color">Dịch Vụ</strong> Của Chúng Tôi</h1>
+			<div class="col-lg-3 col-sm-6">
+				<div class="service-box">
+					<i class = "fa fa-4x fa-tags"></i>
+					<h3><strong class="focus-color">Chất lượng</strong> Hàng đầu</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, veniam cupiditate. Atque at laboriosam repellendus, cupiditate quas expedita fugiat facere illo </p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="service-box">
+					<i class = "fa fa-4x fa-truck"></i>
+					<h3>Miễn Phí<strong class="focus-color"> Vận Chuyển</strong></h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, veniam cupiditate. Atque at laboriosam repellendus, cupiditate quas expedita fugiat facere illo </p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="service-box">
+					<i class = "fa fa-4x fa-lock"></i>
+					<h3><strong class="focus-color">Bảo Mật </strong>Thông Tin</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, veniam cupiditate. Atque at laboriosam repellendus, cupiditate quas expedita fugiat facere illo </p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="service-box">
+					<i class = "fa fa-4x fa-history"></i>
+					<h3><strong class="focus-color">Đổi Trả</strong> 30 Ngày</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, veniam cupiditate. Atque at laboriosam repellendus, cupiditate quas expedita fugiat facere illo </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--end our service-->
+<!--categories-->
+<section id="categories" class="text-center">
+	<div class="container">
+		<h1><strong class="active-color">Danh Mục</strong> Sản Phẩm</h1>
+		<% for(var i = 0; i < menuCategories.length; i ++) { %>
+		<div class="col-lg-3 col-sm-6 category-box">
+			<h2><%= menuCategories[i].name %></h2>
+			<img class = "img-rounded"  src="<%= menuCategories[i].image %>" alt="<%= menuCategories[i].name %>">					
+			<p class= "text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident fuga beatae, porro architecto similique nam voluptates adipisci suscipit asperiores reiciendis esse. Aliquam laborum mollitia eos minima minus debitis suscipit quae.</p>
+			<a href="/product/<%= menuCategories[i]._id %>" class="btn btn-lg btn-primary">Xem Chi Tiết</a>
+		</div>
+		<% } %>
+	</div>
+</section>
+<!--end categories-->
+<!--popular-product-->
+<section id="popular-product" class="text-center">
+	<div class="overlay">
+		<div class="container">
+			<h1>Sản phẩm <strong class="focus-color">Phổ biến</strong></h1>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Bóng EX</h3>
+				<img src="/images/SonPU.jpg" alt="">
+				<div class="product-desc">
+		                        <div class="editContent" style="outline: none; cursor: inherit;">
+		                            	<h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		                        </div>
+		                            <div class="product-rating">
+		                                <i class="fa fa-star"></i>
+		                                <i class="fa fa-star"></i>
+		                                <i class="fa fa-star"></i>
+		                                <i class="fa fa-star-half-o"></i>
+		                                <i class="fa fa-star-o"></i>
+		                            </div>
+		                     </div>
+		                     <hr>
+		                     
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Bóng TC</h3>
+				<img src="/images/SonPU.jpg" alt="">
+				<div class="product-desc">
+		            <div class="editContent" style="outline: none; cursor: inherit;">
+		                 <h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		            </div>
+		            <div class="product-rating">
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star-half-o"></i>
+		                 <i class="fa fa-star-o"></i>
+		            </div>
+		        </div>
+		        <hr>
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Mờ 02 -30%</h3>
+				<img src="/images/SonPU.jpg" alt="">
+				<div class="product-desc">
+		            <div class="editContent" style="outline: none; cursor: inherit;">
+		                 <h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		            </div>
+		            <div class="product-rating">
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star-half-o"></i>
+		                 <i class="fa fa-star-o"></i>
+		            </div>
+		        </div>
+		        <hr>
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Mờ 01-50%</h3>
+				<img src="/images/SonPU.jpg" alt="">
+				<div class="product-desc">
+		            <div class="editContent" style="outline: none; cursor: inherit;">
+		                 <h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		            </div>
+		            <div class="product-rating">
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star-half-o"></i>
+		                 <i class="fa fa-star-o"></i>
+		            </div>
+		        </div>
+		        <hr>
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Sơn CN -835</h3>
+				<img src="/images/SonCongNghiep.jpg" alt="">
+				<div class="product-desc">
+		            <div class="editContent" style="outline: none; cursor: inherit;">
+		                 <h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		            </div>
+		            <div class="product-rating">
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star-half-o"></i>
+		                 <i class="fa fa-star-o"></i>
+		            </div>
+		        </div>
+		        <hr>
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Bóng 2k-01</h3>
+				<img src="images/son2k.jpg" alt="">
+				<div class="product-desc">
+		            <div class="editContent" style="outline: none; cursor: inherit;">
+		                 <h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		            </div>
+		            <div class="product-rating focus-color">
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star-half-o"></i>
+		                 <i class="fa fa-star-o"></i>
+		            </div>
+		        </div>
+		        <hr>
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Mờ 2k-01</h3>
+				<img src="/images/son2k.jpg" alt="">
+				<div class="product-desc">
+		            <div class="editContent" style="outline: none; cursor: inherit;">
+		                 <h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		            </div>
+		            <div class="product-rating">
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star-half-o"></i>
+		                 <i class="fa fa-star-o"></i>
+		            </div>
+		        </div>
+		        <hr>
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+			<div class="product col-lg-3 col-md-4 col-sm-6">
+				<h3>Sơn Kẽm 931</h3>
+				<img src="/images/SonNgoaiThat.jpg" alt="">
+				<div class="product-desc">
+		            <div class="editContent" style="outline: none; cursor: inherit;">
+		                 <h4><del> 100.000 VNĐ</del> 96.500 VNĐ</h4>
+		            </div>
+		            <div class="product-rating">
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star"></i>
+		                 <i class="fa fa-star-half-o"></i>
+		                 <i class="fa fa-star-o"></i>
+		            </div>
+		        </div>
+		        <hr>
+				<button class="btn btn-lg btn-success"><i class="glyphicon glyphicon-shopping-cart"></i> Đặt Hàng</button>
+				<button class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-search"></i> Chi Tiết</button>
+			</div>
+		</div>
+	</div>
+</section>
+<!--end popular-product-->
+<!--testimonials-->
+<section id="testimonials" class="text-center">
+	<div class="container">
+		<h1>Khách hàng <strong class="focus-color">nói gì</strong> về chúng tôi</h1>
+		<div class="flexslider">
+						<ul class="slides">
+							<li>
+								<div class="banner">
+									<div class="col-sm-4 bnr-tleft">
+										<img src="/images/avatar/avatar_01.jpg" alt=""/>
+									</div>
+									<div class="col-sm-8 bnr-tright">
+										
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida mauris non mi gravida, at sollicitudin odio efficitur. Mauris ex nulla, aliquam ornare facilisis nec convallis pulvinar a non nunc non leo sollici</p>
+										<strong class="active-color">Jony smith</strong>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</li>
+							<li>
+								<div class="banner">
+									<div class="col-sm-4 bnr-tleft">
+										<img src="/images/avatar/avatar_02.jpg" alt=""/>
+									</div>
+									<div class="col-sm-8 bnr-tright">
+									
+										<p>Integer gravida mauris non mi gravida, at sollicitudin odio efficitur. Lorem ipsum dolor sit amet elit consectetur adipiscing. Mauris ex nulla, aliquam ornare facilisis nec convallis pulvinar a non nunc non leo sollicitudin</p>
+										<strong class="active-color">Donnal Trum</strong>
+									</div>
+									<div class="clearfix"> </div>
+								</div> 
+							</li>
+							<li>
+								<div class="banner">
+									<div class="col-sm-4 bnr-tleft">
+										<img src="/images/avatar/avatar_03.jpg" alt=""/>
+									</div>
+									<div class="col-sm-8 bnr-tright">
+										
+										<p>Mauris ex nulla, aliquam ornare facilisis nec convallis pulvinar a non nunc non leo sollicitudin, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida mauris non mi gravida, at sollicitudin odio efficitur. </p>
+										<strong class="active-color">Barack obama</strong>
+									</div>
+									<div class="clearfix"> </div>
+								</div> 
+							</li>
+						</ul> 
+					</div> 
+	</div>
+</section>
+<!--end testimonials-->
+<!--contact us-->
+<section id="contact-us">
+	<div class="overlay">
+		<div class="container text-center">
+			<h1><strong class="focus-color">Liên Hệ</strong> Với Chúng Tôi</h1>
+			<form id = "form-contact" action="">
+				<div class="col-lg-6">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Điền địa chỉ email">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Điền địa chỉ Họ & Tên">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Số điện thoại">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Địa chỉ liên hệ">
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<textarea name="" id="" cols="30" rows="8" placeholder="nội dung tin nhắn"></textarea>
+					<button class="btn btn-lg">Gửi Tin Nhắn</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+<!--end contact us-->

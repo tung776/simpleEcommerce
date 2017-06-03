@@ -1,0 +1,38 @@
+<% layout('layout') %>
+<div class="jumbotron hero-technology">
+        <h1 class="hero-title">Cattuong coating</h1>
+        <p class="hero-subtitle">Colorful for your life</p>
+        <p><a class="btn btn-primary btn-lg hero-button" role="button" href="/products">Order now</a></p>
+    </div>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <% for(var i = 0; i < categories.length; i++) { %>
+                <div class="swiper-slide" 
+                    style="background-image:url(<%= categories[i].image %>);"></div>
+                <% } %>
+                
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="photo-gallery">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Categories </h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+            </div>
+            <div class="row photos">
+                <% for(var i = 0; i < categories.length; i++) { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 item">
+                    <a href="/products/<%= categories[i]._id %>" data-lightbox="photos">
+                        <img class="img-responsive" src="<%= categories[i].image %>">
+                    </a>
+                </div>
+                <% } %>
+                
+            </div>
+        </div>
+    </div>

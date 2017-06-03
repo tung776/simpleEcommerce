@@ -1,0 +1,21 @@
+
+           		<div class="container text-center"> 
+           			<div class="flexslider">
+						<ul class="slides">
+							<% for(var i = 0; i < menuCategories.length; i ++) { %>
+							<li>
+								<div class="banner">
+									<div class="col-sm-4 bnr-tleft">
+										<img src="<%= menuCategories[i].image %>" alt="<%=menuCategories[i].name %>"/>
+									</div>
+									<div class="col-sm-8 bnr-tright">
+										<h2><%=menuCategories[i].name %></h2>
+										
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</li>
+							<% } %>
+						</ul> 
+					</div> 
+           		</div>

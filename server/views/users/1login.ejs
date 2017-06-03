@@ -1,0 +1,19 @@
+<% layout('layout') %>
+
+<div class="container">
+    <div class="login-card">
+        <% include ../partials/message %>
+            <form action = "/users/login" method = "POST" class="form-signin">
+                <span class="reauth-email"> </span>
+                <input class="form-control" type="email" required placeholder="Email address" autofocus="" name = "email">
+                <input class="form-control" type="password" required placeholder="Password" name="password">
+                <div class="checkbox">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox">Remember me</label>
+                    </div>
+                </div>
+            <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
+        </form><a href="#" class="forgot-password">Forgot your password?</a></div>
+     
+</div>

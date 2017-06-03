@@ -1,19 +1,18 @@
-<% layout('layout') %>
+<% layout('shortLayout') %>
 
-<div class="container">
-    <div class="login-card">
-        <% include ../partials/message %>
-            <form action = "/users/login" method = "POST" class="form-signin">
-                <span class="reauth-email"> </span>
-                <input class="form-control" type="email" required placeholder="Email address" autofocus="" name = "email">
-                <input class="form-control" type="password" required placeholder="Password" name="password">
-                <div class="checkbox">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox">Remember me</label>
-                    </div>
-                </div>
-            <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Sign in</button>
-        </form><a href="#" class="forgot-password">Forgot your password?</a></div>
-     
-</div>
+<h1 class = "active-color text-center">Đăng Nhập</h1>
+				<!--login-->
+				<section id="login" class="text-center div container">
+					<% include ../partials/message %>
+					<form action = "/users/login" method = "POST" >
+						<div class="form-group">
+							<input name = "email" type="email" class="form-control" placeholder="Điền địa chỉ email" required>
+						</div>
+						<div class="form-group">
+							<input name = "password" type="password" class="form-control" placeholder="Điền password"required>
+						</div>
+						<button class="btn btn-lg btn-primary">Đăng Nhập</button>
+						<a href="#" class="forgot-password">Forgot your password?</a>
+					</form>
+				</section>
+				<!--end login-->

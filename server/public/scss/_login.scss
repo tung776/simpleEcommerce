@@ -1,0 +1,14 @@
+
+#login {
+	border:1px solid #fff;
+	border-radius: 10px;
+	background-color: rgba(0,0,0,0.5);
+	@include dark-text;
+	padding: 30px;
+	width: 50%;
+	input {
+		background-color: rgba(0,0,0,0.7);
+		border: none;
+		color: #ffffff;
+	}
+} 
