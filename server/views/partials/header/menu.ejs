@@ -41,6 +41,18 @@
                             <% } %>
 						  </ul>
 						</li>
+						<li>
+							<% if(currenUser) { %>
+								<% if(cartQuantity) { %>
+								
+									<a href = "/cart" class = "glyphicon glyphicon-shopping-cart"><span class = "badge"><%= cartQuantity %></span></a>
+								<% } else {  %>
+									<a href = "/cart" class = "glyphicon glyphicon-shopping-cart"><span class="badge">0</span></a>
+								<% } %>
+							<% } %>
+								
+						
+						</li>
 					  </ul>
 					</div><!-- /.navbar-collapse -->
 				  </div>

@@ -14,6 +14,7 @@
 			</div>
 			<div class="col-lg-9">
 				<% include compoments/search %>
+				<% include ../partials/message %>
 				<div class = "list-products">
 					<% for(var i = 0; i < products.length; i ++) { %>
 					<div class="col-lg-4 col-sm-6">
@@ -37,13 +38,17 @@
 		                            </div>
 		                     </div>
 							
-							<a class="btn btn-success">Đặt hàng</a>
+							<a href = "/cart/add-to-cart/<%= products[i]._id %>" class="btn btn-success">Đặt hàng</a>
 							<a class = "btn btn-primary" href="/product/detail/<%= products[i]._id %>">Chi Tiết</a>
 						</div>
 					</div>
 					<% } %>
+					
 				</div>
 				
+				<div class="loading">
+					<img src = "/images/loading.gif" />
+				</div>
 			</div>
 			<% include compoments/pagination %>
 	</div>

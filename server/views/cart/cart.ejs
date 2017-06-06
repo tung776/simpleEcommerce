@@ -1,0 +1,77 @@
+<% layout("layout") %>
+
+
+<section id="cart" class="text-center">
+	<form method = "POST" action= "/api/cartPay">
+	<div class="container">
+	    <% include ../partials/message %>
+	    
+		<h1 class = "active-color">Giỏ Hàng</h1>
+		
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				
+				<div id = "cartMessage" class="alert alert-success alert-dismissible" role="alert" >
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  ...
+				</div>
+				<div id = "cartError" class="alert alert-error alert-dismissible" role="alert" >
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  ...
+				</div>
+				
+				<% for( var i = 0; i < cart.items.length; i ++) {%>
+				<div class="media items" name = "items">
+					<div class="media-left media-middle">
+						<a href="/product/detail/<%= cart.items[i].item._id%>">
+							<img src="<%=  cart.items[i].item.image %>" alt="">
+						</a>
+					</div>
+					<div class="media-body media-middle">
+						<h4><%=  cart.items[i].item.name %> </h4>
+						<a  class="btn btn-warning minusQuanity "><i class= "fa fa-minus"></i></a>
+						
+						<input  style = "border:none; width: 30px" id = "cartQuantity" type = "text" name = "cartQuantity" class=" cartQuantity cart text-center" value = "<%=  cart.items[i].quantity %>"></input>
+							<a class="btn btn-success addQuanity"><i class = "fa fa-plus"></i></a>
+					</div>
+					<div class="media-right media-middle">
+						<input  style = "border:none; margin-top: 30%; padding: 5px 0;font-size: 18px" id = "cartPrice" name = "cartPrice" class="active-color cartPrice cart" value = "<%=  cart.items[i].price %>"> </input> VNĐ
+						<input id = "id" type = "hidden" name = "id" class="" value = "<%=  cart.items[i].item._id %>"> </input>
+					</div>
+					
+				</div>
+				<% } %>
+				
+				
+				<hr/>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<ul class = "list-unstyled text-right">
+					<li>
+						<p id = "TotalPriceNotVat" >Tổng Tiền: <%= cart.getTotalPrice() %> VNĐ</p>
+					</li>
+					<li>
+						<p id = "totalVat">VAT: <%=  Math.floor(cart.getTotalPrice() *0.1) %>VNĐ</p>
+					</li>
+					<li>
+						<p id = "totalPriceIncludeVat" class="active-color">Tổng tiền (gồm VAT): <%=  Math.floor(cart.getTotalPrice() * 1.1) %> VNĐ</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="row button-group">
+			<div class="col-lg-8 col-lg-offset-2">
+				<a href = "/product" class="btn btn-primary">Tiếp tục mua sắm</a>
+				<button id= "pay" type =submit class="btn btn-success">Thanh Toán</button>
+			</div>
+		</div>
+	</div>
+	</form>
+</section>
+
+
