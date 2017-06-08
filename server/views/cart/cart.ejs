@@ -58,7 +58,8 @@
 						<p id = "totalVat">VAT: <%=  Math.floor(cart.getTotalPrice() *0.1) %>VNĐ</p>
 					</li>
 					<li>
-						<p id = "totalPriceIncludeVat" class="active-color">Tổng tiền (gồm VAT): <%=  Math.floor(cart.getTotalPrice() * 1.1) %> VNĐ</p>
+						<p class="active-color">Tổng tiền (gồm VAT): <span id = "totalPriceIncludeVat" class = "active-color"> <%=  Math.floor(cart.getTotalPrice() * 1.1) %> </span>VNĐ</p>
+						<input type = "hidden" value = "" />
 					</li>
 				</ul>
 			</div>
@@ -66,12 +67,95 @@
 		
 		<div class="row button-group">
 			<div class="col-lg-8 col-lg-offset-2">
-				<a href = "/product" class="btn btn-primary">Tiếp tục mua sắm</a>
-				<button id= "pay" type =submit class="btn btn-success">Thanh Toán</button>
+				<a href = "/product" class="btn btn-info">Tiếp tục mua sắm</a>
+				<button id= "pay" type =submit class="btn btn-success">Lưu Đơn Đặt Hàng</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+				  Thanh Toán
+				</button>
 			</div>
 		</div>
 	</div>
 	</form>
+
+
+
+<div id = "myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Thanh Toán</h4>
+      </div>
+      <div class="modal-body">
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+          <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
+          <script src='/js/checkout.js' type='text/javascript' defer></script>
+          
+          <form accept-charset="UTF-8" action="/api/checkout" class="require-validation" data-cc-on-file="false" 
+                        data-stripe-publishable-key="pk_test_YoPwx3OqaMKKdZN32mWFDhoD" 
+                        id="payment-form" method="post">
+            
+            <div style="margin:0;padding:0;display:inline">
+              <input name="utf8" type="hidden" value="✓" />
+              <input name="_method" type="hidden" value="PUT" />
+              <input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" />
+            </div>
+            <div class='form-row'>
+              <div class='col-xs-12 form-group required'>
+                <label class='control-label'>Tên Thẻ Ngân Hàng</label>
+                <input class='form-control' size='4' type='text'>
+              </div>
+            </div>
+            <div class='form-row'>
+              <div class='col-xs-12 form-group card required'>
+                <label class='control-label'>Số Thẻ Ngân Hàng</label>
+                <input autocomplete='off' class='form-control card-number' size='20' type='text'>
+              </div>
+            </div>
+            <div class='form-row'>
+              <div class='col-xs-4 form-group cvc required'>
+                <label class='control-label'>CVC</label>
+                <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+              </div>
+              <div class='col-xs-4 form-group expiration required'>
+                <label class='control-label'>Hạn sử dụng</label>
+                <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+              </div>
+              <div class='col-xs-4 form-group expiration required'>
+                <label class='control-label'> </label>
+                <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+              </div>
+            </div>
+            <div class='form-row'>
+              <div class='col-md-12'>
+                <div class='form-control total btn btn-info'>
+                  Total:
+                  <span id = "totalPriceIncludeVat" class='amount'> <%=  Math.floor(cart.getTotalPrice() * 1.1) %></span> 
+                    VND
+                </div>
+              </div>
+            </div>
+            <div class='form-row'>
+              <div class='col-md-12 form-group'>
+                <button class='form-control btn btn-primary submit-button' type='submit'>Thực Hiện Thanh Toán</button>
+              </div>
+            </div>
+            <div class='form-row'>
+              <div class='col-md-12 error form-group hide'>
+                <div class='alert-danger alert'>
+                  Please correct the errors and try again.
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class='col-md-1'></div>
+      </div>
+      <div class="modal-footer" style = "border-top: none">
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </section>
-
-

@@ -12,9 +12,7 @@ export default async function(req, res, next){
                 for(let i = 0; i < cart.items.length; i ++) {
                     total += cart.items[i].quantity;
                 }
-                console.log("cart = " + total);
                 res.locals.cartQuantity = total;
-                console.log("res.locals.cart = " + res.locals.cart );
             }
             else {
                 cart = new cartModel({

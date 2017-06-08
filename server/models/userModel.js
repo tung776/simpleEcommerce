@@ -20,7 +20,11 @@ const schema = new mongoose.Schema({
     history:[{
         date: Date,
         paid: {type: Number, default: 0},
-        // item: {type: mongoose.Schema.Types.ObjectId, ref: "Cart"}
+        items: [{
+            item: {type: mongoose.Schema.Types.ObjectId, ref: 'Products'},
+            quantity: {type: Number, default: 1},
+            price: {type: Number, default: 0},
+        }]
     }]
 });
 

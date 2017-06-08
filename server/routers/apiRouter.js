@@ -4,6 +4,7 @@ import categoryModel from "../models/categoryModel";
 import productModel from "../models/productModel"
 const apiRouter = require('express').Router();
 import cartModel from "../models/cartModel";
+import userModel from "../models/userModel";
 
 apiRouter.get('/autoGenProducts', function(req, res, next){
     async.waterfall([
@@ -19,17 +20,12 @@ apiRouter.get('/autoGenProducts', function(req, res, next){
             for(var i = 0; i < categories.length; i++){
                 console.log(i);
                 for(var j = 0; j < 50; j ++) {
-                    console.log("go here");
+                   
                     let product = new productModel();
                     product.category = categories[i]._id;
-                    console.log("faker: " + JSON.stringify(faker.commerce));
-                    console.log("categories[i]._id; " + categories[i]._id);
                     product.name = faker.commerce.productName();
-                    console.log("product.name" + product.name);
-                    console.log("faker.ecommerce.productName()" + faker.commerce.productName())
                     product.price = faker.commerce.price();
                     product.image = faker.image.image();
-                    console.log(product);
                     product.save().catch(err=> res.json(err));
                 }
             }
@@ -59,7 +55,6 @@ apiRouter.post("/search", async function(req, res, next){
                                             .limit(perpage )
                                             .populate("category");
         let count = await productModel.count(query);
-        
         res.json({
             message: "success",
             isSuccess: true,
@@ -75,13 +70,12 @@ apiRouter.post("/search", async function(req, res, next){
 });
 
 apiRouter.post("/cartPay", async function(req, res, next) {
+    console.log("go here");
     let cart = await cartModel.findOne({owner: req.user._id});
     if(cart){
         let order = req.body.order;
         for(let i = 0; i < order.length; i++){
             cart.items.forEach(function(item){
-                console.log("item " + item);
-                console.log("order[i].id =" + order[i].id);
                 if(item.item == order[i].id) {
                    if(order[i].quantity <= 0){
                        item.quantity =0;
@@ -96,13 +90,58 @@ apiRouter.post("/cartPay", async function(req, res, next) {
             return element.quantity > 0;
         })
         let newCart = await cart.save();
-        console.log("req.body.order " + JSON.stringify(req.body.order));
-        console.log("cart " + newCart);
         res.json({isSuccess: true, newCart: newCart});
     }
     else {
         next();
     }
    
+});
+apiRouter.post("/checkout", async function(req, res, next){
+    console.log("go to checkout");
+    var stripe = require("stripe")(
+      "sk_test_T7vBx12MSmyWvAtXAnTtADyZ"
+    );
+    let cart = await cartModel.findOne({owner: req.user._id});
+    stripe.charges.create({
+      amount: cart.getTotal() * 22000,
+      currency: "vnd",
+      source: req.body.stripeToken, // obtained with Stripe.js
+      description: "Test Charge for soncattuong.com"
+    }, async function(err, charge) {
+      // asynchronously called
+      if(err) {
+          console.log("Đã có lỗi " + err);
+           res.json({
+               message: err,
+               isSuccess: false
+           });
+      }
+      else {
+          try {
+              let user = await userModel.findOne({_id: req.user._id});
+              let object = {
+                  items: cart.items,
+                  paid: cart.getTotalPriceIncludeVat(),
+                  date: Date.now()
+              }
+              user.history.push(object);
+              console.log("user.history" + user.history);
+              cart.total = 0;
+              cart.items = [];
+              await cart.save();
+              await user.save();
+              req.flash('message', "Bạn đã thanh toán thành công, Cám ơn bạn đã mua hàng của chúng tôi!");
+              res.redirect("/users/profile");
+          }
+          catch(err){
+              console.log(err);
+              res.json({
+                  message: err,
+                  isSuccess: false
+              });
+          }
+      }
+    });
 })
 export default apiRouter;

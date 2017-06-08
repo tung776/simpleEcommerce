@@ -94,7 +94,7 @@ var caculateTotal = function() {
 	
 	$("#cart #TotalPriceNotVat").html("Tổng Tiền: " + totalPrice + " VNĐ");
 	$("#cart #totalVat").html("Tổng Tiền: " + Math.floor(totalPrice *0.1) + " VNĐ");
-	$("#cart #totalPriceIncludeVat").html("Tổng Tiền: " + Math.floor(totalPrice*1.1) + " VNĐ");
+	$("#cart #totalPriceIncludeVat").html( Math.floor(totalPrice*1.1));
 }
 
 addCartButton.click(function(){

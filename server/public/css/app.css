@@ -435,6 +435,7 @@ p, i, span, a {
   #cart p,
   #cart span,
   #cart input,
+  #cart label,
   #cart strong{
     color:#2A2A2A}
     #cart .container .media .media-left,
@@ -448,3 +449,26 @@ p, i, span, a {
     #cart .button-group {
 			padding-top: 50px;
 		}
+#profile h1, #profile h2, #profile h3, #profile h4, #profile i, #profile p, #profile span, #profile strong {
+  color: #2A2A2A; }
+#profile li {
+  color: #232323; }
+#profile .media img {
+  width: 200px; }
+#profile .media-body {
+      border-right: 2px solid #fff; }
+#profile .media .item-box {
+  border-bottom: 2px solid #fff;
+}
+#profile .media .item-box:last-child {
+  border-bottom: none;
+}
+#profile .pagination li > a {
+  height: 40px; }
+  
+#profile .history-item-box {
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  padding: 10px 5px;
+  background-color: #ccc;
+}

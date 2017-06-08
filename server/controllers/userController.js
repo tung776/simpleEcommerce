@@ -77,9 +77,12 @@ userController.getLogout = (req, res, next)=>{
 
 userController.getProfile = (req, res, next)=>{
     userModel.findOne({_id: req.user.id})
+        .populate("history.items.item")
         .then(
             foundUser=> {
+                console.log(foundUser.history[1].items[0].item);
                 res.render('users/profile', {user: foundUser});
+                
             })
         .catch(err=>{
             console.log(err);

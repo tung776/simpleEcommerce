@@ -22,4 +22,12 @@ cartSchema.methods.getTotalPrice = function(){
     }
     return totalPrice;
 }
+cartSchema.methods.getTotalPriceIncludeVat = function(){
+   let totalPrice = 0;
+    for(let i = 0; i < this.items.length;i++){
+        totalPrice += this.items[i].quantity * this.items[i].price;
+    }
+    return totalPrice*1.1;
+}
+
 export default mongoose.model('Carts', cartSchema);
