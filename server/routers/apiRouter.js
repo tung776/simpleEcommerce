@@ -74,23 +74,29 @@ apiRouter.post("/cartPay", async function(req, res, next) {
     let cart = await cartModel.findOne({owner: req.user._id});
     if(cart){
         let order = req.body.order;
-        for(let i = 0; i < order.length; i++){
-            cart.items.forEach(function(item){
-                if(item.item == order[i].id) {
-                   if(order[i].quantity <= 0){
-                       item.quantity =0;
-                   }
-                   else {
-                        item.quantity = order[i].quantity;
-                   }
-                }
-            });
+        if(order) {
+            for(let i = 0; i < order.length; i++){
+                cart.items.forEach(function(item){
+                    if(item.item == order[i].id) {
+                       if(order[i].quantity <= 0){
+                           item.quantity =0;
+                       }
+                       else {
+                            item.quantity = order[i].quantity;
+                       }
+                    }
+                });
+            }
+            cart.items = cart.items.filter(function(element){
+                return element.quantity > 0;
+            })
+            let newCart = await cart.save();
+            res.json({isSuccess: true, newCart: newCart});
         }
-        cart.items = cart.items.filter(function(element){
-            return element.quantity > 0;
-        })
-        let newCart = await cart.save();
-        res.json({isSuccess: true, newCart: newCart});
+        else {
+            next();
+        }
+        
     }
     else {
         next();
